@@ -34,9 +34,32 @@ if proxies >= 1: # No WSGI without a proxy indicator.
     app.wsgi_app = ProxyFix(app.wsgi_app, x_for=proxies, x_proto=proxies, x_host=proxies, x_port=proxies)
 
 
-## STEP 2 - APP IMPORTS
+## STEP 2 - FURTHER INITZIALIZATION
 
-@app.route('/')
-def index():
-    return "Hello, world."
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///mylibrary.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+## STEP 3 - INTERNAL IMPORTS
+
+from libraries.extensions import Database, LoginHandler
+from libraries.models.user import User
+from libraries.models.book import Book
+
+from libraries.routes.main import main_bp
+
+## STEP 4 - SET UP SITES
+
+app.register_blueprint(main_bp, url_prefix="/")
+
+## STEP 5 - SETTING UP AUTHENTICATION
+
+LoginHandler.init_app(app)
+LoginHandler.login_view = 'main_bp.index'
+LoginHandler.login_message = "Please log in to access this page."
+
+## STEP 6 - SETTING UP DB
+
+Database.init_app(app)
+
+with app.app_context(): # If no db? Make db!
+    Database.create_all()
