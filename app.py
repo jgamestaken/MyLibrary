@@ -57,6 +57,10 @@ LoginHandler.init_app(app)
 LoginHandler.login_view = 'main_bp.index'
 LoginHandler.login_message = "Please log in to access this page."
 
+@LoginHandler.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
 ## STEP 6 - SETTING UP DB
 
 Database.init_app(app)
