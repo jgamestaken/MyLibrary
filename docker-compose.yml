@@ -1,0 +1,30 @@
+services:
+  web:
+    build: .
+    container_name: mylibrary-web
+    env_file:
+      - .env
+    expose:
+      - "5000"
+    volumes: 
+      - ./data:/app/data
+      - ./libraries:/app/libraries
+    networks:
+      - internal
+  
+  nginx:
+    image: nginx:mainline-alpine
+    container_name: mylibrary-nginx
+    ports:
+      - "80"
+      - "443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - web
+    networks:
+      - internal
+
+networks:
+  internal:
+    driver: bridge
