@@ -1,0 +1,15 @@
+{
+    "login": {
+        "title": "Log in",
+        "description": "Log in om jouw $ENV.LIBRARY_NAME$ account te zien",
+        "email_label": "Jouw email adres",
+        "email_placeholder": "Email adres",
+        "password_label": "Jouw wachtwoord",
+        "password_placeholder": "Wachtwoord",
+        "registration_info": "Alleen een biblioteek-administrator kan een account voor je maken"
+    },
+
+    "index": {
+        "welcome": "Welkom bij $ENV.LIBRARY_NAME$"
+    }
+}

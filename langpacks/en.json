@@ -1,0 +1,15 @@
+{
+    "login": {
+        "title": "Log in",
+        "description": "Log in to see your {{ env['LIBRARY_NAME'] }} account",
+        "email_label": "Your email address",
+        "email_placeholder": "Email address",
+        "password_label": "Your password",
+        "password_placeholder": "Password",
+        "registration_info": "Only a library administrator can make an account for you"
+    },
+
+    "index": {
+        "welcome": "Welcome to $ENV.LIBRARY_NAME$"
+    }
+}

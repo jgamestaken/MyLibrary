@@ -45,7 +45,7 @@ from libraries.extensions import Database, LoginHandler
 from libraries.models.user import User
 from libraries.models.book import Book
 
-from libraries.routes.main import main_bp
+from libraries.routes.login import main_bp
 
 ## STEP 4 - SET UP SITES
 

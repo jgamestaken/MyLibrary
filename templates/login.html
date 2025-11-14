@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>{{ env["LIBRARY_NAME"] }} - Login</title>
+
+        <link rel="stylesheet" href="static/{{ env['STYLE'] }}/login.css">
+    </head>
+
+    <body>
+        <h>{{ Language.getLanguageString("login", "title") }}</h>
+        <h2>{{ Language.getLanguageString("login", "description") }}</h2>
+
+        <form>
+            <label for="email" id="email_label">{{ Language.getLanguageString('login', 'email_label') }}</label>
+            <input type="email" id="email" name="email" placeholder="{{ Language.getLanguageString('login', 'email_placeholder') }}">
+
+        </form>
+
+        <p>{{ Language.getLanguageString("login", "registration_info") }}</p>
+    </body>
+</html>

@@ -7,8 +7,9 @@ services:
     expose:
       - "5000"
     volumes: 
-      - ./site:/app/site
+      - ./templates:/app/templates
       - ./libraries:/app/libraries
+      - ./langpacks:/app/langpacks
     networks:
       - internal
   
