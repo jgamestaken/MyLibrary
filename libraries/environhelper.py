@@ -4,7 +4,8 @@ import os
 
 SAFE_ENV_KEYS = { # Define the environment variables that are safe to expose
     "LANGUAGE",
-    "LIBRARY_NAME"
+    "LIBRARY_NAME",
+    "STYLE"
 }
 
 def get_safe_env(): # Returns a safe environment table for Jinja

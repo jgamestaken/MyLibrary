@@ -7,9 +7,7 @@ services:
     expose:
       - "5000"
     volumes: 
-      - ./templates:/app/templates
-      - ./libraries:/app/libraries
-      - ./langpacks:/app/langpacks
+      - instance:/app/instance
     networks:
       - internal
   
@@ -29,3 +27,7 @@ services:
 networks:
   internal:
     driver: bridge
+
+volumes:
+  instance:
+    external: false

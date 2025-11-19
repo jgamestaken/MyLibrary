@@ -42,14 +42,16 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 ## STEP 3 - INTERNAL IMPORTS
 
 from libraries.extensions import Database, LoginHandler
-from libraries.models.user import User
+from libraries.models.user import User, create_default_account
 from libraries.models.book import Book
 
 from libraries.routes.login import main_bp
+from libraries.routes.home import home_bp
 
 ## STEP 4 - SET UP SITES
 
 app.register_blueprint(main_bp, url_prefix="/")
+app.register_blueprint(home_bp, url_prefix="/")
 
 ## STEP 5 - SETTING UP AUTHENTICATION
 
@@ -67,3 +69,10 @@ Database.init_app(app)
 
 with app.app_context(): # If no db? Make db!
     Database.create_all()
+
+    # Check if the users table is empty, if so, make a default account(how else would you get in?)
+    if User.query.count() == 0:
+        print("No users in database, creating one admin user")
+        create_default_account(app)
+
+## DONE! ALL OTHER MAGIC HAPPENS WITHIN THE JS
