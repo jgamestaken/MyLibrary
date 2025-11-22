@@ -11,15 +11,19 @@
     </head>
 
     <body>
-        <h>{{ Language.getLanguageString("login", "title") }}</h>
+        <h1>{{ Language.getLanguageString("login", "title") }}</h1>
         <h2>{{ Language.getLanguageString("login", "description") }}</h2>
 
-        <form>
+        <form action="/login" method="post">
             <label class="input_label" for="email" id="email_label">{{ Language.getLanguageString('login', 'email_label') }}</label>
             <input class="input_field" type="email" id="email" name="email" placeholder="{{ Language.getLanguageString('login', 'email_placeholder') }}">
 
+            <label class="input_label" for="password" id="password_label">{{ Language.getLanguageString('login', 'password_label') }}</label>
+            <input class="input_field" type="password" id="password" name="password" placeholder="{{ Language.getLanguageString('login', 'password_placeholder') }}">
+
+            <input class="input_submit" type="submit" value="{{ Language.getLanguageString('login', 'title') }}">
         </form>
 
-        <p>{{ Language.getLanguageString("login", "registration_info") }}</p>
+        <p class="littletext">{{ Language.getLanguageString("login", "registration_info") }}</p>
     </body>
 </html>
